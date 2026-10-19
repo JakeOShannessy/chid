@@ -61,7 +61,7 @@ impl FromStr for Chid {
             Err(_) => return Err(ParseChidError::TooLong),
         };
         // Check that there are no invalid characters.
-        if let Some(position) = array_string.find(|c: char| c == '.' || c == ' ') {
+        if let Some(position) = array_string.find(['.', ' ']) {
             return Err(ParseChidError::InvalidChar {
                 position,
                 character: array_string.chars().nth(position).unwrap(),
